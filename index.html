@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3.2 Standards Alignment - Understanding AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.2em;
+        }
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.95;
+            margin-bottom: 5px;
+        }
+        .header .lesson-info {
+            font-size: 0.95em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        .content {
+            padding: 30px;
+        }
+        .intro {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2196F3;
+            margin-bottom: 30px;
+        }
+        .standards-selector {
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .standards-selector label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+        .standards-selector select {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        .standards-selector select:hover {
+            border-color: #764ba2;
+        }
+        .standards-selector select:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.1);
+        }
+        .standards-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        .standards-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .standard-section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 4px solid #667eea;
+        }
+        .standard-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .standard-section h3 {
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        .standard-item {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 3px solid #9c27b0;
+        }
+        .standard-code {
+            font-weight: 600;
+            color: #764ba2;
+            font-family: 'Courier New', monospace;
+        }
+        .standard-description {
+            margin-top: 8px;
+            color: #555;
+        }
+        .alignment-note {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ff9800;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        .lesson-mapping {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .lesson-mapping strong {
+            color: #2e7d32;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .print-button:hover {
+            background: #764ba2;
+        }
+        @media print {
+            .print-button, .standards-selector {
+                display: none;
+            }
+            .standards-content {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>State Standards Alignment</h1>
+            <div class="subtitle">Understanding AI: A Conceptual Approach</div>
+            <div class="lesson-info">Chapter 3, Lesson 3.2: Basic Prompt Structures</div>
+        </div>
+        
+        <button class="print-button" onclick="window.print()">🖨️ Print Standards</button>
+        
+        <div class="content">
+            <div class="intro">
+                <p><strong>Lesson 3.2</strong> is a hybrid Lesson Day where students learn four basic prompt structures (command, question, role-playing, constraint-based) and practice the iteration cycle through both human-to-human practice and hands-on work with AI. This lesson emphasizes communication skills, procedural writing, collaborative learning, and iterative refinement—competencies addressed across multiple state and national standards frameworks.</p>
+            </div>
+            
+            <div class="standards-selector">
+                <label for="standards-select">Select Standards Framework:</label>
+                <select id="standards-select" onchange="showStandards(this.value)">
+                    <option value="">-- Choose State Standards --</option>
+                    <option value="texas">Texas (TEKS)</option>
+                    <option value="california">California</option>
+                    <option value="florida">Florida</option>
+                    <option value="newyork">New York</option>
+                    <option value="pennsylvania">Pennsylvania</option>
+                    <option value="illinois">Illinois</option>
+                    <option value="ohio">Ohio</option>
+                    <option value="georgia">Georgia</option>
+                    <option value="northcarolina">North Carolina</option>
+                    <option value="michigan">Michigan</option>
+                    <option value="virginia">Virginia</option>
+                    <option value="washington">Washington</option>
+                    <option value="mississippi">Mississippi</option>
+                    <option value="ccss">Common Core State Standards (CCSS) - ELA</option>
+                    <option value="iste">ISTE Standards for Students</option>
+                    <option value="csta">CSTA K-12 Computer Science Standards</option>
+                    <option value="c3">C3 Framework for Social Studies</option>
+                </select>
+            </div>
+
+            <!-- Mississippi Standards -->
+            <div id="mississippi" class="standards-content">
+                <div class="standard-section">
+                    <h2>Mississippi College and Career Readiness Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 3.2 emphasizes procedural communication, collaborative learning, and iterative refinement through structured practice with both human partners and AI systems.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">W.11-12.4</div>
+                        <div class="standard-description">Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students produce clear prompts appropriate to different purposes (command, question, role-playing, constraint-based) and audiences (AI system), learning to match structure to task.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">W.11-12.5</div>
+                        <div class="standard-description">Develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> The 30-second critique, 10-second response iteration pattern teaches systematic revision and refinement, with students documenting what changed and what improved through multiple iterations.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">SL.11-12.1</div>
+                        <div class="standard-description">Initiate and participate effectively in a range of collaborative discussions with diverse partners.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> The "Be the AI" partner activity requires students to collaborate effectively, taking turns as director and "AI," providing feedback, and discussing what makes prompts clear or confusing.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">L.11-12.3</div>
+                        <div class="standard-description">Apply knowledge of language to understand how language functions in different contexts and to make effective choices for meaning or style.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students learn how different prompt structures function in different contexts, making strategic choices about which structure serves their purpose best.</div>
+                    </div>
+                    
+                    <h3>Career and Technical Education</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CTE.IT.1</div>
+                        <div class="standard-description">Demonstrate effective communication skills in professional settings.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students develop procedural communication skills through giving clear directions, providing specific feedback, and refining instructions iteratively—all essential professional communication competencies.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CTE.IT.2</div>
+                        <div class="standard-description">Demonstrate problem-solving and critical thinking skills.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students diagnose why prompts fail, identify what information is missing, and systematically refine their approach—developing diagnostic and critical thinking skills.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Common Core Standards -->
+            <div id="ccss" class="standards-content">
+                <div class="standard-section">
+                    <h2>Common Core State Standards - English Language Arts</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 3.2 addresses writing process, speaking and listening, and language standards through structured practice in communication and iteration.
+                    </div>
+                    
+                    <h3>Writing Standards</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.9-10.4 / W.11-12.4</div>
+                        <div class="standard-description">Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students learn four distinct prompt structures and practice matching structure to purpose: command for direct requests, question for exploration, role-playing for perspective, constraint-based for specificity.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.9-10.5 / W.11-12.5</div>
+                        <div class="standard-description">Develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> The iteration cycle teaches systematic revision through evaluate → refine → repeat pattern. Students document each iteration, tracking what changed and what improved, developing metacognitive awareness of the revision process.</div>
+                    </div>
+                    
+                    <h3>Speaking and Listening Standards</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.SL.9-10.1 / SL.11-12.1</div>
+                        <div class="standard-description">Initiate and participate effectively in collaborative discussions, building on others' ideas and expressing their own clearly and persuasively.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> The "Be the AI" partner activity requires effective collaboration, turn-taking, giving and receiving feedback, and discussing what makes communication effective—all in structured partner and whole-class formats.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.SL.9-10.1.C / SL.11-12.1.C</div>
+                        <div class="standard-description">Propel conversations by posing and responding to questions that relate the current discussion to broader themes or larger ideas.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> During debrief discussions, students connect their practice experiences to broader themes about communication, clarity, and iteration—relating specific examples to general principles.</div>
+                    </div>
+                    
+                    <h3>Language Standards</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.L.9-10.3 / L.11-12.3</div>
+                        <div class="standard-description">Apply knowledge of language to understand how language functions in different contexts, to make effective choices for meaning or style.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students learn how different prompt structures (command, question, role-playing, constraint) function differently and make strategic choices based on their communicative purpose.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ISTE Standards -->
+            <div id="iste" class="standards-content">
+                <div class="standard-section">
+                    <h2>ISTE Standards for Students</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 3.2 develops students as Empowered Learners and Creative Communicators through structured practice with AI systems and collaborative learning activities.
+                    </div>
+                    
+                    <h3>1. Empowered Learner</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">1b</div>
+                        <div class="standard-description">Students build networks and customize their learning environments in ways that support the learning process.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students learn to customize their interaction with AI through different prompt structures, building a personalized toolkit for effective AI communication.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">1c</div>
+                        <div class="standard-description">Students use technology to seek feedback that informs and improves their practice and to demonstrate their learning in a variety of ways.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> The iteration cycle teaches students to use AI responses as feedback, systematically refining their prompts based on output quality and documenting their improvement process.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">1d</div>
+                        <div class="standard-description">Students understand the fundamental concepts of technology operations, demonstrate the ability to choose, use and troubleshoot current technologies.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students learn fundamental concepts of AI interaction (prompt structures, iteration patterns) and develop troubleshooting skills through diagnosing why prompts fail and refining their approach.</div>
+                    </div>
+                    
+                    <h3>6. Creative Communicator</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">6a</div>
+                        <div class="standard-description">Students choose the appropriate platforms and tools for meeting the desired objectives of their creation or communication.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students learn to choose appropriate prompt structures for different objectives: commands for direct creation, questions for exploration, role-playing for perspective, constraints for specificity.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">6b</div>
+                        <div class="standard-description">Students create original works or responsibly repurpose or remix digital resources into new creations.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students learn to direct AI to create content, understanding their role as editor and curator who shapes AI-generated output into coherent creative works.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">6c</div>
+                        <div class="standard-description">Students communicate complex ideas clearly and effectively by creating or using a variety of digital objects.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Through practicing different prompt structures, students learn to communicate complex creative visions clearly, using appropriate structures to convey their intent to AI systems.</div>
+                    </div>
+                    
+                    <h3>4. Innovative Designer</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">4d</div>
+                        <div class="standard-description">Students exhibit a tolerance for ambiguity, perseverance and the capacity to work with open-ended problems.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> The iteration cycle requires students to embrace imperfect first attempts, persist through multiple refinements, and work with the open-ended challenge of communicating creative vision effectively.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CSTA Standards -->
+            <div id="csta" class="standards-content">
+                <div class="standard-section">
+                    <h2>CSTA K-12 Computer Science Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 3.2 addresses human-computer interaction, iterative design processes, and effective communication with computational systems.
+                    </div>
+                    
+                    <h3>Impacts of Computing</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">3A-IC-24</div>
+                        <div class="standard-description">Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students explore how AI changes communication practices and professional workflows, learning skills that are increasingly valuable across careers and contexts.</div>
+                    </div>
+                    
+                    <h3>Computing Systems</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">3A-CS-03</div>
+                        <div class="standard-description">Develop guidelines that convey systematic troubleshooting strategies that others can use to identify and fix errors.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> The iteration cycle provides a systematic troubleshooting framework: evaluate output, identify problems (too vague, missing context, wrong structure), refine direction, repeat. Students document this process for future reference.</div>
+                    </div>
+                    
+                    <h3>Algorithms and Programming</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">3A-AP-16</div>
+                        <div class="standard-description">Design and iteratively develop computational artifacts for practical intent, personal expression, or to address a societal issue by using events to initiate instructions.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students design prompts (instructions to AI systems) and iteratively refine them, learning the design cycle of test → evaluate → refine that applies broadly to computational artifact development.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- C3 Framework -->
+            <div id="c3" class="standards-content">
+                <div class="standard-section">
+                    <h2>C3 Framework for Social Studies</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 3.2 develops communication and collaboration competencies essential for civic participation and economic literacy in technology-integrated society.
+                    </div>
+                    
+                    <h3>Dimension 2: Economics</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">D2.Eco.1.9-12</div>
+                        <div class="standard-description">Analyze how incentives influence choices that may result in policies with a range of costs and benefits for different groups.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students learn skills that change professional possibilities and career pathways, understanding how AI communication skills create new opportunities while requiring adaptation from traditional writing-focused approaches.</div>
+                    </div>
+                    
+                    <h3>Dimension 4: Communicating Conclusions</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">D4.1.9-12</div>
+                        <div class="standard-description">Construct arguments using precise and knowledgeable claims, with evidence from multiple sources.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students construct precise prompts using specific structures, learning to communicate claims and requests clearly with appropriate supporting detail and context.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">D4.3.9-12</div>
+                        <div class="standard-description">Present adaptations of arguments and explanations that feature evocative ideas and perspectives on issues and topics to reach a range of audiences and venues outside the classroom.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students learn to adapt their communication approach (choosing different prompt structures) based on purpose and audience, a skill transferable to civic communication and public discourse.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Texas TEKS -->
+            <div id="texas" class="standards-content">
+                <div class="standard-section">
+                    <h2>Texas Essential Knowledge and Skills (TEKS)</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 3.2 addresses writing process, collaborative learning, and technology application standards through structured practice with prompt engineering.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">ELA.110.36.b.11</div>
+                        <div class="standard-description">Compose correspondence that reflects an opinion, registers a complaint, or requests information in a business or friendly structure.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students learn to compose requests (prompts) using appropriate structures for different purposes: command prompts for direct requests, question prompts for information gathering, role-playing for specific perspectives.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">ELA.110.36.b.13</div>
+                        <div class="standard-description">Develop drafts into a focused, structured, and coherent piece of writing by organizing with purposeful structure and developing an engaging idea reflecting depth of thought with specific facts and details.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> The iteration cycle teaches students to develop prompts from initial drafts into focused, structured communication by systematically refining and adding specific details based on evaluation of AI responses.</div>
+                    </div>
+                    
+                    <h3>Technology Applications</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">TA.126.33.c.1</div>
+                        <div class="standard-description">Demonstrate professional written, verbal, and electronic communication skills.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students develop professional electronic communication skills through learning structured approaches to AI interaction, iterative refinement, and clear articulation of requirements—all transferable to workplace communication.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">TA.126.33.c.5</div>
+                        <div class="standard-description">Collaborate effectively through personal learning networks and face-to-face interactions.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> The "Be the AI" partner activity requires effective face-to-face collaboration, with students taking turns directing and responding, providing feedback, and discussing communication strategies.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- California Standards -->
+            <div id="california" class="standards-content">
+                <div class="standard-section">
+                    <h2>California Common Core State Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 3.2 addresses writing, speaking/listening, and language standards through collaborative practice and iterative refinement.
+                    </div>
+                    
+                    <h3>Writing Standards</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.9-10.4</div>
+                        <div class="standard-description">Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students learn to match prompt structures to tasks: command prompts for direct creation, question prompts for exploration, role-playing for perspective, constraint-based for specificity.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.9-10.5</div>
+                        <div class="standard-description">Develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> The 30-second critique, 10-second response pattern teaches systematic revision, with students documenting each iteration and analyzing what changed and what improved.</div>
+                    </div>
+                    
+                    <h3>Speaking and Listening Standards</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.SL.9-10.1</div>
+                        <div class="standard-description">Initiate and participate effectively in collaborative discussions, building on others' ideas and expressing their own clearly.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Partner activity requires effective collaboration as students take turns directing and being "AI," providing feedback, and discussing what makes prompts effective.</div>
+                    </div>
+                    
+                    <h3>Career Technical Education Standards</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CTE.IT.1.2</div>
+                        <div class="standard-description">Demonstrate effective communication with colleagues, clients, and customers.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students develop procedural communication skills—giving clear directions, providing specific feedback, refining instructions iteratively—that transfer directly to professional contexts.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Florida Standards -->
+            <div id="florida" class="standards-content">
+                <div class="standard-section">
+                    <h2>Florida Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 3.2 addresses Language Arts and Digital Literacy standards through structured communication practice and iterative learning processes.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">LAFS.910.W.1.4</div>
+                        <div class="standard-description">Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students learn four distinct prompt structures and practice choosing appropriate structures based on task (what they're trying to achieve) and purpose (command, explore, adopt perspective, or constrain).</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">LAFS.910.SL.1.1</div>
+                        <div class="standard-description">Initiate and participate effectively in collaborative discussions, building on others' ideas and expressing their own clearly and persuasively.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> The "Be the AI" partner activity and class debriefs require effective collaborative discussion, with students sharing experiences, building on peer observations, and articulating communication strategies.</div>
+                    </div>
+                    
+                    <h3>Digital Literacy Standards</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">SS.912.C.2.10</div>
+                        <div class="standard-description">Monitor current public issues in Florida, the United States, and the world.</div>
+                        <div class="lesson-mapping"><strong>Lesson 3.2 Alignment:</strong> Students develop skills for working with AI technology—a current issue affecting education, employment, and civic life—learning to communicate effectively with emerging technologies.</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div><!-- End content -->
+    </div><!-- End container -->
+    
+    <script>
+        function showStandards(value) {
+            // Hide all standards content
+            const allContent = document.querySelectorAll('.standards-content');
+            allContent.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show selected standards
+            if (value) {
+                const selectedContent = document.getElementById(value);
+                if (selectedContent) {
+                    selectedContent.classList.add('active');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
